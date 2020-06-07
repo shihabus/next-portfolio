@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
+import { withRouter } from "next/router";
 
-const Post = ({ url: { query } }) => (
+const Post = ({ router: { query } }) => (
   <Layout title={query.title}>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
@@ -10,6 +11,6 @@ const Post = ({ url: { query } }) => (
     </p>
   </Layout>
 );
-export default Post;
+export default withRouter(Post);
 
 // /post?title='react'
