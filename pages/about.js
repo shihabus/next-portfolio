@@ -1,18 +1,14 @@
 import { Component } from "react";
-import Link from "next/link";
+import Error from "./_error";
 import Layout from "../components/Layout";
-// import fetch from "isomorphic-unfetch";
 
 class About extends Component {
-  state = {
-    user: this.props.user,
-  };
-
   // this runs in server
-  static getInitialProps() {
-    return fetch(`https://api.github.com/users/octocat`)
-      .then((res) => res.json())
-      .then((data) => ({ user: data }));
+  static async getInitialProps() {
+    const resp = await fetch(`https://api.github.com/users/octocat`);
+    const statusCode = resp.status > 200 ? resp.status : false;
+    const user = await resp.json();
+    return { user, statusCode };
   }
 
   // this runs on client
@@ -23,14 +19,16 @@ class About extends Component {
   // };
 
   render() {
+    const { user, statusCode } = this.props;
+
+    if (statusCode) {
+      return <Error statusCode={statusCode} />;
+    }
+
     return (
       <Layout title="About">
-        <Link href="/">
-          <a>Go to Home</a>
-        </Link>
-        {JSON.stringify(this.state.user)}
         <div>A JS developer</div>
-        <img src="/static/js-logo.png" alt="js-logo" />
+        <img src={user.avatar_url} alt="github-avatar" />
       </Layout>
     );
   }
