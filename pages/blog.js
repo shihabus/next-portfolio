@@ -1,13 +1,12 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
 
-const PostLink = ({ title }) => (
+// Link - as: is what get displayed in address bar as route
+
+const PostLink = ({ slug, title }) => (
   <li>
-    <Link href={`/post?title=${title}`}>
-      <a>
-        {title.toString()[0].toUpperCase()}
-        {title.toString().slice(1)} Post
-      </a>
+    <Link as={`/${slug}`} href={`/post?title=${title}`}>
+      <a>{title}</a>
     </Link>
   </li>
 );
@@ -15,9 +14,9 @@ const PostLink = ({ title }) => (
 const Blog = () => (
   <Layout title="My Blog">
     <ul>
-      <PostLink title="react" />
-      <PostLink title="angular" />
-      <PostLink title="vue" />
+      <PostLink title="React Post" slug="react-post" />
+      <PostLink title="Angular Post" slug="angular-post" />
+      <PostLink title="Vue Post" slug="vue-post" />
     </ul>
   </Layout>
 );
