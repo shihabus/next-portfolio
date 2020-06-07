@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next"
+    "dev": "next",
+    "build": "next build",
+    "export": "next export",
+    "deploy": "cd out && now --public"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "next": "^9.4.4",
+    "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
