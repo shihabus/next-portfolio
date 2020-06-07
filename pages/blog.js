@@ -1,8 +1,6 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
 
-// Link - as: is what get displayed in address bar as route
-
 const PostLink = ({ slug, title }) => (
   <li>
     <Link as={`/${slug}`} href={`/post?title=${title}`}>

@@ -3,20 +3,12 @@ import Error from "./_error";
 import Layout from "../components/Layout";
 
 class About extends Component {
-  // this runs in server
   static async getInitialProps() {
     const resp = await fetch(`https://api.github.com/users/octocat`);
     const statusCode = resp.status > 200 ? resp.status : false;
     const user = await resp.json();
     return { user, statusCode };
   }
-
-  // this runs on client
-  // componentDidMount = () => {
-  //   fetch(`https://api.github.com/users/octocat`)
-  //     .then((res) => res.json())
-  //     .then((data) => this.setState({ user: data }));
-  // };
 
   render() {
     const { user, statusCode } = this.props;
@@ -33,9 +25,5 @@ class About extends Component {
     );
   }
 }
-
-// About.getInitialProps = () => {
-
-// }
 
 export default About;

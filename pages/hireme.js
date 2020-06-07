@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+
 const HireMe = () => (
   <Layout title="Hire Me">
     <p>
