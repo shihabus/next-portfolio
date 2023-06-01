@@ -7,3 +7,5 @@ A next.js portfolio project.
 ### This is created by SHIHAB
 
 ### This is a change that I made in REMOTE
+
+### We are learning Git and Github
